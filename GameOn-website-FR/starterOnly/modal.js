@@ -1,10 +1,5 @@
 //keydown test
-document.body.addEventListener("keydown", (ev)=>{
-  if(ev.key == "n"){   
-     
-alert("last value is");
 
-}});
 
 function editNav() {
   var x = document.getElementById("myTopnav");
@@ -16,11 +11,13 @@ function editNav() {
 }
 
 // DOM Elements
+const body = document.querySelector("body");
 const modalbg = document.querySelector(".bground");
 const modalBtn = document.querySelectorAll(".modal-btn");
 const formData = document.querySelectorAll(".formData");
 const closeBtn =document.querySelector(".close");
 const submitBtn=document.querySelector(".btn-submit");
+const form= document.querySelector("form");
 
 // launch modal event
 modalBtn.forEach((btn) => btn.addEventListener("click", launchModal));
@@ -31,18 +28,15 @@ function launchModal() {
 }
 
 // caching balise inputs 
-let baliseFirstName=document.getElementById("first");
-let baliseLasttName=document.getElementById("last");
-let baliseEmail=document.getElementById("email");
-let baliseBirthdate=document.getElementById("birthdate");
-let baliseQuantity=document.getElementById("quantity");
-let form =document.getElementById("formulaire");
+let FirstName=document.getElementById("first");
+let LasttName=document.getElementById("last");
+let Email=document.getElementById("email");
+let Birthdate=document.getElementById("birthdate");
+let Quantity=document.getElementById("quantity");
+
 let btn=document.querySelector("button");
 
-// alert FirstName with key 
-document.body.addEventListener("keydown", (ev)=>{
-  if(ev.key == "a"){alert("la saisie est " +baliseFirstName.value);}
-});
+
 
 // close button
 
@@ -51,13 +45,27 @@ closeBtn.addEventListener("click",(ev)=>{
 });
 
 // entery field captation
- let userFirstName=baliseFirstName.value;
-    let userLastName=baliseLasttName.value;
-    let userEmail=baliseEmail.value;
-    let userBirthday=baliseBirthdate.value;
-    let userQuantity=baliseQuantity.value;
+// let userFirstName=baliseFirstName.value;
+// let userLastName=baliseLasttName.value;
+// let userEmail=baliseEmail.value;
+// let userBirthday=baliseBirthdate.value;
+// let userQuantity=baliseQuantity.value;
 
-    //radio buttons captation
+    //checkbox captation
+    let check1=document.querySelector('input[id="checkbox1"]');
+    let check2=document.querySelector('input[id="checkbox2"]')
+    check1=check1.checked;
+    check2=check2.checked;
+
+
+    //g key test captor
+    body.addEventListener("keydown",(e)=>{
+      if(e.key=="g"){
+        alert("check1="+check1);
+      }
+    })
+
+
 
 //cancel defalt submit
 
@@ -65,40 +73,69 @@ form.addEventListener("submit",(event)=>{
 
   event.preventDefault();
   let last= document.getElementById("last")
-  alert("coucou")
+
 });
 
 
 
 
-//solution
 
 
-//keydown test
-document.body.addEventListener("keydown", (ev)=>{
-  if(ev.key == "n"){   
-     
-alert("last value is"+couleur);
+// //radio buttons show and captation
 
-}});
-// affiche la valeur du radio coché
+let checkboxList= document.querySelectorAll('input[name="location"]')
+let checkboxValue;
 
 
-let baliseCouleur = document.querySelectorAll('input[name="location"]')
-let couleur = ""
-
-console.log(couleur) // affiche la valeur du radio coché
-
-document.body.addEventListener("keydown", (ev)=>{
-  if(ev.key == "n"){   
-    for (let i = 0; i < baliseCouleur.length; i++) {
-    if (baliseCouleur[i].checked) {
-        couleur = baliseCouleur[i].value
-        break
+form.addEventListener("submit",(e)=>{
+  
+  for( let i=0; i<checkboxList.length; i++){
+    if(checkboxList[i].checked==true){
+  checkboxValue=checkboxList[i].value;
+  break;
     }
-}
-alert("last value is"+couleur);
+  }
+  
+  alert("value:"+checkboxValue)});
 
-}});
+// vérification texte rempli
+FirstName.style.backgroundColor="violet";
+FirstName.addEventListener("change",(e)=>{
+  
+  let regex1= new RegExp ("[A-Z]+[a-z]");
+  let regexMail=new RegExp("[a-z 0-9 .-_]{2}@[A-Z a-z 0-9 .-_]{2}\\.[a-z]{2}");
+   let numRegex=new RegExp("\\d");
 
-kljhl
+
+  if(numRegex.test(FirstName.value)==false){alert("il faut deux lettres (n'oublie pas la majuscule)");}
+
+  else if (champ=="connard"){alert("va te faire foutre!");}
+});
+
+
+
+  //test keydown
+
+
+let footer=document.querySelector("footer");
+
+body.addEventListener("keydown",(e)=>{
+  if(e.key =="k"){alert("value"+userLastName)}
+})
+
+footer.classList.add("error");
+
+
+let div= document.createElement("div");
+
+
+
+
+
+
+div.innerText="coucou je suis le div";
+div.setAttribute("style",
+"background-color:red;height: 3rem;display:flex; justify-content: center; align-items: center;");
+
+let PDive=document.getElementById("prenom");
+PDive.append(div);
