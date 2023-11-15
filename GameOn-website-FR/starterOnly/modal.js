@@ -28,13 +28,13 @@ function launchModal() {
 }
 
 // caching balise inputs 
-let FirstName=document.getElementById("first");
-let LasttName=document.getElementById("last");
-let Email=document.getElementById("email");
-let Birthdate=document.getElementById("birthdate");
-let Quantity=document.getElementById("quantity");
+// let FirstName=document.getElementById("first");
+// let LasttName=document.getElementById("last");
+// let Email=document.getElementById("email");
+// let Birthdate=document.getElementById("birthdate");
+// let Quantity=document.getElementById("quantity");
 
-let btn=document.querySelector("button");
+// let btn=document.querySelector("button");
 
 
 
@@ -98,26 +98,24 @@ form.addEventListener("submit",(e)=>{
   
   alert("value:"+checkboxValue)});
 
-// vérification texte rempli
-FirstName.style.backgroundColor="violet";
-FirstName.addEventListener("change",(e)=>{
+// REGEX TEST ONE
+
+// FirstName.addEventListener("change",(e)=>{
   
-  let regex1= new RegExp ("[A-Z]+[a-z]");
-  let regexMail=new RegExp("[a-z 0-9 .-_]{2}@[A-Z a-z 0-9 .-_]{2}\\.[a-z]{2}");
-   let numRegex=new RegExp("\\d");
 
 
-  if(numRegex.test(FirstName.value)==false){alert("il faut deux lettres (n'oublie pas la majuscule)");}
 
-  else if (champ=="connard"){alert("va te faire foutre!");}
-});
+//   if(numRegex.test(FirstName.value)==false){alert("il faut deux lettres (n'oublie pas la majuscule)");}
+
+//   else if (champ=="connard"){alert("va te faire foutre!");}
+// });
 
 
 
   //test keydown
 
 
-let footer=document.querySelector("footer");
+
 
 body.addEventListener("keydown",(e)=>{
   if(e.key =="k"){alert("value"+userLastName)}
@@ -126,16 +124,76 @@ body.addEventListener("keydown",(e)=>{
 footer.classList.add("error");
 
 
+
+//création div error
+
 let div= document.createElement("div");
-
-
-
-
-
-
 div.innerText="coucou je suis le div";
 div.setAttribute("style",
-"background-color:red;height: 3rem;display:flex; justify-content: center; align-items: center;");
+"background-color:red;height: 3rem;"+
+"display:flex; justify-content: center;"+
+" align-items: center;");
 
-let PDive=document.getElementById("prenom");
-PDive.append(div);
+//creating error divs
+let prenom=document.getElementById("prenom");
+
+let nom=document.getElementById("nom");
+let email=document.getElementById("email");
+let naissance=document.getElementById("naissance");
+let nombre=document.getElementById("nombre");
+let radio=document.getElementById("radio");
+let cocher=document.getElementById("cocher");
+
+//creating error messages
+let errorName="Veuillez entrer 2 caractères ou plus.";
+let errorMail="Veuillez entrer une adresse mail valide.";
+let errorNaissance="Veuillez entrer une date de naissance valide.";
+let errorNombre="Veuillez entrer un nombre.";
+let errorRadio="Vous devez choisir une option.";
+let errorCocher="Vous devez vérifier que vous acceptez les termes et conditions.";
+
+//création régex
+let regexName= new RegExp ("[A-Z]+[a-z]");
+let regexMail=new RegExp("[a-z 0-9 .-_]{2}@[A-Z a-z 0-9 .-_]{2}\\.[a-z]{2}");
+ let regexNaissance=new RegExp("[1-31]");
+ let regexNombre=new RegExp("\\d");
+ let regexRadio= new RegExp();
+ let regexCocher= new RegExp();
+
+ //crating function captation valiues
+ function captationValue (element){
+  //serching for strings
+ if( document.querySelector("text-control")  )
+ 
+ {
+return element.value;
+ }}
+
+let Email=document.getElementById("email");
+let Birthdate=document.getElementById("birthdate");
+let Quantity=document.getElementById("quantity");
+ 
+
+
+
+ //création fonction du div d'error
+function divMaker (element,regex,error){
+  regex.test(element.querySelector);
+
+
+ element.parentElement.appendChild(div);
+ div.className="aka";
+
+  div.innerText=`l'erreur est ${error}`; 
+};
+  
+
+  let papa=Quantity.parentElement
+  papa.appendChild(div);
+// nom.appendChild(div);
+// email.appendChild(div);
+// naissance.appendChild(div);
+// nombre.appendChild(div);
+// radio.appendChild(div);
+// cocher.appendChild(div);
+
