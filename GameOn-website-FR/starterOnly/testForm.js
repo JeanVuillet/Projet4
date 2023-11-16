@@ -57,8 +57,26 @@ let errorCocher="Vous devez vérifier que vous acceptez les termes et conditions
   return value;
 
  }
- // creating errorDivMaker
- 
+ // creating errorDiv
+ let div= document.createElement("div");
+ div.className="error";
+ div.setAttribute("style",
+ "background-color:red;height: 3rem;"+
+ "display:flex; justify-content: center;"+
+ " align-items: center;");
+
+  
+
+
+
+//creating errorDivMaker
+function errorDiv(formElement, ErrorMessage){
+  div.innerText=ErrorMessage;
+  formElement.parentElement.appendChild(div);}
+
+
+
+
 //CHECKING FIRSTNAME
 FirstName.addEventListener("change",(e)=>
 { 
@@ -66,12 +84,20 @@ FirstName.addEventListener("change",(e)=>
   value= textfieldCaptor(FirstName)
   //testing value
   resultTest= regexName.test(value)
-  //genrating error div if error
-  if(resultTest=="false"){
+  //testing errorDiv presence
+  let present=(document.querySelector(".error"))
 
+  //genrating error div if error and no div yet
+if(!resultTest && !present){
+errorDiv(FirstName,errorName);}
+  //removing errordiv if error corrected
+
+  else if(resultTest && present){
+FirstName.parentElement.removeChild(div);
   }
-return resultName;}
-);
+
+
+});
 
 // applying
 
@@ -215,12 +241,7 @@ document.addEventListener("keydown",(e)=>{
 
 //création div error
 
-let div= document.createElement("div");
-div.innerText="coucou je suis le div";
-div.setAttribute("style",
-"background-color:red;height: 3rem;"+
-"display:flex; justify-content: center;"+
-" align-items: center;");
+
 
 
 
@@ -235,24 +256,6 @@ return element.value;
  }}
 
  
-
-
-
- //création fonction du div d'error
-function divMaker (element,regex,error){
-  regex.test(element.querySelector);
-
-
- element.parentElement.appendChild(div);
- div.className="aka";
-
-  div.innerText=`l'erreur est ${error}`; 
-};
-  
-
-  let papa=Quantity.parentElement
-  papa.appendChild(div);
-
 
 
 
