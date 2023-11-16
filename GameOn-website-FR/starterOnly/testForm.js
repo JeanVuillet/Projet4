@@ -1,6 +1,3 @@
-//keydown test
-
-
 function editNav() {
   var x = document.getElementById("myTopnav");
   if (x.className === "topnav") {
@@ -10,14 +7,96 @@ function editNav() {
   }
 }
 
+
+
+//
+
+
+// GETTING ELEMENTS
+
 // DOM Elements
-const body = document.querySelector("body");
+
+//formulaire
 const modalbg = document.querySelector(".bground");
+//bouton d'accès au formulaire
 const modalBtn = document.querySelectorAll(".modal-btn");
+// sousDiv du formulaire
 const formData = document.querySelectorAll(".formData");
+// btn close du formulaire
 const closeBtn =document.querySelector(".close");
+// btn submit
 const submitBtn=document.querySelector(".btn-submit");
-const form= document.querySelector("form");
+//
+
+// getting formElements
+let FirstName=document.getElementById("first");
+let LasttName=document.getElementById("last");
+let Email=document.getElementById("email");
+let Birthdate=document.getElementById("birthdate");
+let Quantity=document.getElementById("quantity");
+
+//créating regex
+let regexName= new RegExp ("[A-Z]+[a-z]");
+let regexMail=new RegExp("[a-z 0-9 .-_]{2}@[A-Z a-z 0-9 .-_]{2}\\.[a-z]{2}");
+ let regexNaissance=new RegExp("[1-31]");
+ let regexNombre=new RegExp("\\d");
+ let regexRadio= new RegExp();
+ let regexCocher= new RegExp();
+
+ //creating error messages
+let errorName="Veuillez entrer 2 caractères ou plus.";
+let errorMail="Veuillez entrer une adresse mail valide.";
+let errorNaissance="Veuillez entrer une date de naissance valide.";
+let errorNombre="Veuillez entrer un nombre.";
+let errorRadio="Vous devez choisir une option.";
+let errorCocher="Vous devez vérifier que vous acceptez les termes et conditions.";
+
+ //creating testFunctions
+ function textfieldCaptor (Field){
+  let value=Field.value;
+  return value;
+
+ }
+ // creating errorDivMaker
+ 
+//CHECKING FIRSTNAME
+FirstName.addEventListener("change",(e)=>
+{ 
+  //capting value
+  value= textfieldCaptor(FirstName)
+  //testing value
+  resultTest= regexName.test(value)
+  //genrating error div if error
+  if(resultTest=="false"){
+
+  }
+return resultName;}
+);
+
+// applying
+
+
+//controling functions
+
+
+
+function verification(event){
+
+
+  //conroling textfield
+
+  if(event.class="text-controle")
+
+  {let value=event.value}
+
+  //controling tcheckbox imput
+
+if(event.class="checkbox-input")
+
+
+  //returning controle result
+  return a;
+}
 
 // launch modal event
 modalBtn.forEach((btn) => btn.addEventListener("click", launchModal));
@@ -28,11 +107,7 @@ function launchModal() {
 }
 
 // caching balise inputs 
-// let FirstName=document.getElementById("first");
-// let LasttName=document.getElementById("last");
-// let Email=document.getElementById("email");
-// let Birthdate=document.getElementById("birthdate");
-// let Quantity=document.getElementById("quantity");
+
 
 // let btn=document.querySelector("button");
 
@@ -59,9 +134,10 @@ closeBtn.addEventListener("click",(ev)=>{
 
 
     //g key test captor
-    body.addEventListener("keydown",(e)=>{
+ 
+    document.addEventListener("keydown",(e)=>{
       if(e.key=="g"){
-        alert("check1="+check1);
+      modalbg.style.backgroundColor="pink";
       }
     })
 
@@ -69,7 +145,7 @@ closeBtn.addEventListener("click",(ev)=>{
 
 //cancel defalt submit
 
-form.addEventListener("submit",(event)=>{
+modalbg.addEventListener("submit",(event)=>{
 
   event.preventDefault();
   let last= document.getElementById("last")
@@ -87,7 +163,7 @@ let checkboxList= document.querySelectorAll('input[name="location"]')
 let checkboxValue;
 
 
-form.addEventListener("submit",(e)=>{
+modalbg.addEventListener("submit",(e)=>{
   
   for( let i=0; i<checkboxList.length; i++){
     if(checkboxList[i].checked==true){
@@ -117,13 +193,25 @@ form.addEventListener("submit",(e)=>{
 
 
 
-body.addEventListener("keydown",(e)=>{
+document.addEventListener("keydown",(e)=>{
   if(e.key =="k"){alert("value"+userLastName)}
 })
 
-footer.classList.add("error");
 
 
+
+
+
+
+//accession aux divs
+// let prenom=document.getElementById("prenom");
+
+// let nom=document.getElementById("nom");
+// let email=document.getElementById("email");
+// let naissance=document.getElementById("naissance");
+// let nombre=document.getElementById("nombre");
+// let radio=document.getElementById("radio");
+// let cocher=document.getElementById("cocher");
 
 //création div error
 
@@ -134,31 +222,8 @@ div.setAttribute("style",
 "display:flex; justify-content: center;"+
 " align-items: center;");
 
-//creating error divs
-let prenom=document.getElementById("prenom");
 
-let nom=document.getElementById("nom");
-let email=document.getElementById("email");
-let naissance=document.getElementById("naissance");
-let nombre=document.getElementById("nombre");
-let radio=document.getElementById("radio");
-let cocher=document.getElementById("cocher");
 
-//creating error messages
-let errorName="Veuillez entrer 2 caractères ou plus.";
-let errorMail="Veuillez entrer une adresse mail valide.";
-let errorNaissance="Veuillez entrer une date de naissance valide.";
-let errorNombre="Veuillez entrer un nombre.";
-let errorRadio="Vous devez choisir une option.";
-let errorCocher="Vous devez vérifier que vous acceptez les termes et conditions.";
-
-//création régex
-let regexName= new RegExp ("[A-Z]+[a-z]");
-let regexMail=new RegExp("[a-z 0-9 .-_]{2}@[A-Z a-z 0-9 .-_]{2}\\.[a-z]{2}");
- let regexNaissance=new RegExp("[1-31]");
- let regexNombre=new RegExp("\\d");
- let regexRadio= new RegExp();
- let regexCocher= new RegExp();
 
  //crating function captation valiues
  function captationValue (element){
@@ -169,9 +234,6 @@ let regexMail=new RegExp("[a-z 0-9 .-_]{2}@[A-Z a-z 0-9 .-_]{2}\\.[a-z]{2}");
 return element.value;
  }}
 
-let Email=document.getElementById("email");
-let Birthdate=document.getElementById("birthdate");
-let Quantity=document.getElementById("quantity");
  
 
 
@@ -190,10 +252,7 @@ function divMaker (element,regex,error){
 
   let papa=Quantity.parentElement
   papa.appendChild(div);
-// nom.appendChild(div);
-// email.appendChild(div);
-// naissance.appendChild(div);
-// nombre.appendChild(div);
-// radio.appendChild(div);
-// cocher.appendChild(div);
+
+
+
 
