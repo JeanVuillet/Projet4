@@ -30,24 +30,47 @@ const submitBtn=document.querySelector(".btn-submit");
 
 // getting formElements
 let FirstName=document.getElementById("first");
-let LasttName=document.getElementById("last");
+let LastName=document.getElementById("last");
 let Email=document.getElementById("email");
 let Birthdate=document.getElementById("birthdate");
 let Quantity=document.getElementById("quantity");
+let g=3;
+//CREATING REGEXP and Controls
 
-//créating regex
-let regexName= new RegExp ("[A-Z]+[a-z]");
+//Text control
+let regexName= new RegExp ("[A-Z]+[a-z]+");
 let regexMail=new RegExp("[a-z 0-9 .-_]{2}@[A-Z a-z 0-9 .-_]{2}\\.[a-z]{2}");
- let regexNaissance=new RegExp("[1-31]");
- let regexNombre=new RegExp("\\d");
+
+//birthdate control
+function getAge(value){
+  let d2 = new Date();
+  var diff = d2.getTime() - value.getTime();
+  return Math.floor(diff / (1000 * 60 * 60 * 24 * 365.25));
+}
+function controlAge (age) {
+
+  
+
+ if (age<18 || age>150){
+  return false
+ }
+ else{return true;}
+
+  
+}
+
+
+
+//Quantity control
+ let regexQuantity=new RegExp("\\d");
  let regexRadio= new RegExp();
- let regexCocher= new RegExp();
+ let regexTcheck= new RegExp();
 
  //creating error messages
 let errorName="Veuillez entrer 2 caractères ou plus.";
 let errorMail="Veuillez entrer une adresse mail valide.";
-let errorNaissance="Veuillez entrer une date de naissance valide.";
-let errorNombre="Veuillez entrer un nombre.";
+let errorBirthdate="Veuillez entrer une date de naissance valide.";
+let errorQuantity="Veuillez entrer un nombre.";
 let errorRadio="Vous devez choisir une option.";
 let errorCocher="Vous devez vérifier que vous acceptez les termes et conditions.";
 
@@ -75,17 +98,17 @@ function errorDiv(formElement, ErrorMessage){
   formElement.parentElement.appendChild(div);}
 
 
-
+let present=false;
 
 //CHECKING FIRSTNAME
 FirstName.addEventListener("change",(e)=>
 { 
   //capting value
-  value= textfieldCaptor(FirstName)
+  value= FirstName.value;
   //testing value
   resultTest= regexName.test(value)
   //testing errorDiv presence
-  let present=(document.querySelector(".error"))
+   present=(document.querySelector(".error"))
 
   //genrating error div if error and no div yet
 if(!resultTest && !present){
@@ -98,9 +121,93 @@ FirstName.parentElement.removeChild(div);
 
 
 });
+//CHEKING LASTNAME
+LastName.addEventListener("change",(e)=>
+{ 
+  //capting value
+  value= LastName.value;
+  //testing value
+  resultTest= regexName.test(value)
+  //testing errorDiv presence
+  present=(document.querySelector(".error"))
 
-// applying
+  //genrating error div if error and no div yet
+if(!resultTest && !present){
+errorDiv(LastName,errorName);}
+  //removing errordiv if error corrected
 
+  else if(resultTest && present){
+LastName.parentElement.removeChild(div);
+  }
+});
+
+//CHECKING MAIL
+Email.addEventListener("change",(e)=>
+{ 
+  //capting value
+  value= Email.value;
+  //testing value
+  resultTest= regexMail.test(value)
+  //testing errorDiv presence
+  present=(document.querySelector(".error"))
+
+  //genrating error div if error and no div yet
+if(!resultTest && !present){
+errorDiv(Email,errorMail);}
+  //removing errordiv if error corrected
+
+  else if(resultTest && present){
+Email.parentElement.removeChild(div);
+  }
+});
+
+//CHEKING BIRTHDATE
+
+Birthdate.addEventListener("input",(e)=>
+//Making this fuking text field leting me input date
+  { a= new RegExp("^[1-9]");
+    if(a.test(Birthdate.value)){
+
+      //input reacts properly
+  let a=new Date(Birthdate.value);
+  alert(a.getTime());
+  //capting value
+   present=(document.querySelector(".error"))
+   let age =getAge(a);
+
+
+  //testing value
+let resultTest=controlAge(age);
+
+//generating errordiv if error and no div yet
+if(!resultTest && !present){
+  errorDiv(Birthdate,errorBirthdate);}
+  else if(resultTest && present){
+    Email.parentElement.removeChild(div);
+      }
+    }
+    });
+
+
+//TCHEKING QUANTITY
+Quantity.addEventListener("change",(e)=>
+{ 
+  //capting value
+  value= Quantity.value;
+  //testing value
+  resultTest= regexQuantity.test(value)
+  //testing errorDiv presence
+  let present=(document.querySelector(".error"))
+
+  //genrating error div if error and no div yet
+if(!resultTest && !present){
+errorDiv(Quantity,errorQuantity);}
+  //removing errordiv if error corrected
+
+  else if(resultTest && present){
+Quantity.parentElement.removeChild(div);
+  }
+});
 
 //controling functions
 
@@ -163,7 +270,7 @@ closeBtn.addEventListener("click",(ev)=>{
  
     document.addEventListener("keydown",(e)=>{
       if(e.key=="g"){
-      modalbg.style.backgroundColor="pink";
+      alert(Birthdate.value);
       }
     })
 
@@ -220,7 +327,7 @@ modalbg.addEventListener("submit",(e)=>{
 
 
 document.addEventListener("keydown",(e)=>{
-  if(e.key =="k"){alert("value"+userLastName)}
+  if(e.key =="k"){alert("value")}
 })
 
 
