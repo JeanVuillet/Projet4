@@ -6,40 +6,55 @@ function editNav() {
     x.className = "topnav";
   }
 }
+// GETTING DOM ELEMENTS
 
-
-
-//
-
-
-// GETTING ELEMENTS
-
-// DOM Elements
-
-//formulaire
+//div formular container
 const modalbg = document.querySelector(".bground");
+
 //bouton d'accès au formulaire
 const modalBtn = document.querySelectorAll(".modal-btn");
-// sousDiv du formulaire
+// sousDiv of form
 const formData = document.querySelectorAll(".formData");
-// btn close du formulaire
+// btn close  form
 const closeBtn =document.querySelector(".close");
 // btn submit
 const submitBtn=document.querySelector(".btn-submit");
-//
 
-// getting formElements
+
+
+//GENERATING FORMULAR DIV
+
+// launch modal event
+modalBtn.forEach((btn) => btn.addEventListener("click", launchModal));
+
+// launch modal form
+function launchModal() {
+  modalbg.style.display = "block";
+}
+
+// close button
+closeBtn.addEventListener("click",(ev)=>{
+  modalbg.style.display="none";
+});
+
+
+
+
+
+// GETTING FORM ELEMENTS
 let FirstName=document.getElementById("first");
 let LastName=document.getElementById("last");
 let Email=document.getElementById("email");
 let Birthdate=document.getElementById("birthdate");
 let Quantity=document.getElementById("quantity");
-let g=3;
+let Radio=document.getElementById("radio");
+let Chekbox=document.getElementById("checkbox");
 //CREATING REGEXP and Controls
 
 //Text control
 let regexName= new RegExp ("[A-Z]+[a-z]+");
-let regexMail=new RegExp("[a-z 0-9 .-_]{2}@[A-Z a-z 0-9 .-_]{2}\\.[a-z]{2}");
+let regexMail=new RegExp("[a-z0-9.-_]{2}@[A-Za-z0-9.-_]{2}\\.[a-z]{2}");
+                    
 
 //birthdate control
 function getAge(value){
@@ -59,9 +74,7 @@ function controlAge (age) {
   
 }
 
-
-
-//Quantity control
+//quantity control
  let regexQuantity=new RegExp("\\d");
  let regexRadio= new RegExp();
  let regexTcheck= new RegExp();
@@ -72,7 +85,7 @@ let errorMail="Veuillez entrer une adresse mail valide.";
 let errorBirthdate="Veuillez entrer une date de naissance valide.";
 let errorQuantity="Veuillez entrer un nombre.";
 let errorRadio="Vous devez choisir une option.";
-let errorCocher="Vous devez vérifier que vous acceptez les termes et conditions.";
+let errorChekbox="Vous devez vérifier que vous acceptez les termes et conditions.";
 
  //creating testFunctions
  function textfieldCaptor (Field){
@@ -100,6 +113,16 @@ function errorDiv(formElement, ErrorMessage){
 
 let present=false;
 
+//CHECKING FORMULAR
+
+//cancel defalt submit
+
+modalbg.addEventListener("submit",(event)=>{
+
+  event.preventDefault();
+  let last= document.getElementById("last")
+
+});
 //CHECKING FIRSTNAME
 FirstName.addEventListener("change",(e)=>
 { 
@@ -164,7 +187,8 @@ Email.parentElement.removeChild(div);
 //CHEKING BIRTHDATE
 
 Birthdate.addEventListener("input",(e)=>
-//Making this fuking text field leting me input date
+
+//Making this fuking textfield leting me input date
   { a= new RegExp("^[1-9]");
     if(a.test(Birthdate.value)){
 
@@ -183,13 +207,13 @@ let resultTest=controlAge(age);
 if(!resultTest && !present){
   errorDiv(Birthdate,errorBirthdate);}
   else if(resultTest && present){
-    Email.parentElement.removeChild(div);
+    Birthdate.parentElement.removeChild(div);
       }
     }
     });
 
 
-//TCHEKING QUANTITY
+//CHEKING QUANTITY
 Quantity.addEventListener("change",(e)=>
 { 
   //capting value
@@ -209,126 +233,77 @@ Quantity.parentElement.removeChild(div);
   }
 });
 
-//controling functions
+
+//CHEKING RADIOBUTTONS
+
+submitBtn.addEventListener('click',(e)=>{
+
+// capting inputList
+let checkboxList= document.querySelectorAll('input[name="location"]')
+let checkboxValue=false;
 
 
+//capting input=true value IF input (else: input=false);
+  
+  for( let i=0; i<checkboxList.length; i++){
+    if(checkboxList[i].checked==true){
+   checkboxValue=checkboxList[i].value;
+  break;
+    }
+  else{checkboxValue==false;}}
+  
+//testing errorDiv presence
+present=(document.querySelector(".error"))
+  //testing value
+  let resultTest=checkboxValue;
 
-function verification(event){
+//genrating error div if error and no div yet
+if(!resultTest && !present){
+errorDiv(checkboxList[0],errorRadio);}
+//removing errordiv if error corrected
 
-
-  //conroling textfield
-
-  if(event.class="text-controle")
-
-  {let value=event.value}
-
-  //controling tcheckbox imput
-
-if(event.class="checkbox-input")
-
-
-  //returning controle result
-  return a;
+else if(resultTest && present){
+Quantity.parentElement.removeChild(div);
 }
-
-// launch modal event
-modalBtn.forEach((btn) => btn.addEventListener("click", launchModal));
-
-// launch modal form
-function launchModal() {
-  modalbg.style.display = "block";
-}
-
-// caching balise inputs 
+;
 
 
-// let btn=document.querySelector("button");
-
-
-
-// close button
-
-closeBtn.addEventListener("click",(ev)=>{
-  modalbg.style.display="none";
 });
 
-// entery field captation
-// let userFirstName=baliseFirstName.value;
-// let userLastName=baliseLasttName.value;
-// let userEmail=baliseEmail.value;
-// let userBirthday=baliseBirthdate.value;
-// let userQuantity=baliseQuantity.value;
 
-    //checkbox captation
+
+//CHEKING VALIDATION CONDITIONS
+submitBtn.addEventListener('click',(e)=>{
+
+
+
+    //capting checkbox values
     let check1=document.querySelector('input[id="checkbox1"]');
     let check2=document.querySelector('input[id="checkbox2"]')
     check1=check1.checked;
     check2=check2.checked;
-
-
-    //g key test captor
- 
-    document.addEventListener("keydown",(e)=>{
-      if(e.key=="g"){
-      alert(Birthdate.value);
-      }
-    })
-
-
-
-//cancel defalt submit
-
-modalbg.addEventListener("submit",(event)=>{
-
-  event.preventDefault();
-  let last= document.getElementById("last")
-
-});
-
-
-
-
-
-
-// //radio buttons show and captation
-
-let checkboxList= document.querySelectorAll('input[name="location"]')
-let checkboxValue;
-
-
-modalbg.addEventListener("submit",(e)=>{
+    let resultTest=Boolean;
+// testing values
+if(check1&&check2){
+   resultTest= true;
+}
+else { resultTest=false;}
   
-  for( let i=0; i<checkboxList.length; i++){
-    if(checkboxList[i].checked==true){
-  checkboxValue=checkboxList[i].value;
-  break;
-    }
+
+//genrating error div if error and no div yet
+let checkbox1=document.getElementById("checkbox1");
+if(!resultTest && !present){
+
+  errorDiv(checkbox1,errorChekbox);}
+
+  //removing errordiv if error corrected
+  
+  else if(resultTest && present){
+  checkbox1.parentElement.removeChild(div);
   }
-  
-  alert("value:"+checkboxValue)});
+  ;
 
-// REGEX TEST ONE
-
-// FirstName.addEventListener("change",(e)=>{
-  
-
-
-
-//   if(numRegex.test(FirstName.value)==false){alert("il faut deux lettres (n'oublie pas la majuscule)");}
-
-//   else if (champ=="connard"){alert("va te faire foutre!");}
-// });
-
-
-
-  //test keydown
-
-
-
-
-document.addEventListener("keydown",(e)=>{
-  if(e.key =="k"){alert("value")}
-})
+    });
 
 
 
@@ -336,33 +311,15 @@ document.addEventListener("keydown",(e)=>{
 
 
 
-//accession aux divs
-// let prenom=document.getElementById("prenom");
-
-// let nom=document.getElementById("nom");
-// let email=document.getElementById("email");
-// let naissance=document.getElementById("naissance");
-// let nombre=document.getElementById("nombre");
-// let radio=document.getElementById("radio");
-// let cocher=document.getElementById("cocher");
-
-//création div error
 
 
 
 
 
 
- //crating function captation valiues
- function captationValue (element){
-  //serching for strings
- if( document.querySelector("text-control")  )
- 
- {
-return element.value;
- }}
 
- 
+
+
 
 
 
