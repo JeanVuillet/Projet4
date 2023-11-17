@@ -20,8 +20,29 @@ const closeBtn =document.querySelector(".close");
 // btn submit
 const submitBtn=document.querySelector(".btn-submit");
 
+//CREATING ERROR DIV
+//Testing if div present
+function presentTester(element){
+  element=element.parentElement.lastElementChild;
+  if(element.className=="error"){
+  return true;}
+  else {return false;}
+}
+ // creating errorDiv if not present
+ function divCreator(resultTest, present,ErrorMessage){
 
+  if(! present&&!resultTest){
+ let div= document.createElement("div");
+ div.className="error";
+ div.setAttribute("style",
+ "background-color:red;height: 3rem;"+
+ "display:flex; justify-content: center;"+
+ " align-items: center;");
+ div.innerText=ErrorMessage;
+ FormElement.parentElement.appendChild(div);
 
+}
+}
 //GENERATING FORMULAR DIV
 
 // launch modal event
@@ -93,25 +114,17 @@ let errorChekbox="Vous devez vérifier que vous acceptez les termes et condition
   return value;
 
  }
- // creating errorDiv
- let div= document.createElement("div");
- div.className="error";
- div.setAttribute("style",
- "background-color:red;height: 3rem;"+
- "display:flex; justify-content: center;"+
- " align-items: center;");
+
 
   
 
 
 
-//creating errorDivMaker
-function errorDiv(formElement, ErrorMessage){
-  div.innerText=ErrorMessage;
-  formElement.parentElement.appendChild(div);}
 
 
-let present=false;
+
+
+
 
 //CHECKING FORMULAR
 
@@ -123,23 +136,25 @@ modalbg.addEventListener("submit",(event)=>{
   let last= document.getElementById("last")
 
 });
+let FormElement;
 //CHECKING FIRSTNAME
 FirstName.addEventListener("change",(e)=>
-{ 
+{ //capting element
+  FormElement=FirstName;
   //capting value
   value= FirstName.value;
   //testing value
   resultTest= regexName.test(value)
   //testing errorDiv presence
-   present=(document.querySelector(".error"))
+   let present=presentTester(FirstName);
 
   //genrating error div if error and no div yet
-if(!resultTest && !present){
-errorDiv(FirstName,errorName);}
+divCreator(resultTest,present, errorName)
   //removing errordiv if error corrected
 
-  else if(resultTest && present){
-FirstName.parentElement.removeChild(div);
+   if(resultTest && present){
+    let parent=FormElement.parentElement;
+parent.removeChild(parent.lastChild);
   }
 
 
