@@ -22,27 +22,16 @@ const submitBtn=document.querySelector(".btn-submit");
 
 //CREATING ERROR DIV
 //Testing if div present
-function presentTester(element){
-  element=element.parentElement.lastElementChild;
-  if(element.className=="error"){
-  return true;}
-  else {return false;}
-}
- // creating errorDiv if not present
- function divCreator(resultTest, present,ErrorMessage){
 
-  if(! present&&!resultTest){
- let div= document.createElement("div");
- div.className="error";
- div.setAttribute("style",
- "background-color:red;height: 3rem;"+
- "display:flex; justify-content: center;"+
- " align-items: center;");
- div.innerText=ErrorMessage;
- FormElement.parentElement.appendChild(div);
+ // creating errorDiv for FirstName
 
-}
-}
+let errorMessage="Le nom doit commencer par une majuscule et comporter au moins 2 caractères";
+
+
+let x= document.querySelector(".formData") 
+x.setAttribute("lolo",errorMessage);
+x.setAttribute("errorMessageVisible",true);
+
 //GENERATING FORMULAR DIV
 
 // launch modal event

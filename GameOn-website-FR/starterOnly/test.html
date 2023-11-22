@@ -1,23 +1,11 @@
-<!DOCTYPE html>
-<html>
-<style>
-.democlass {
-  color: red;
-}
-</style>
-
-<body>
-
-
+<div class="div"  style="background-color:rgb(0, 4, 255)">coucou</div>
 <script>
-function getAge(d1){
-  let d2 = new Date();
-  var diff = d2.getTime() - d1.getTime();
-  return Math.floor(diff / (1000 * 60 * 60 * 24 * 365.25));
-}
-let a= new Date("11/21/1986");
-console.log(getAge(a));
-</script>
 
-</body>
-</html>
+
+
+    var $x = document.querySelector("div");
+    $x.prop("background-color", "red");
+
+
+
+</script>
