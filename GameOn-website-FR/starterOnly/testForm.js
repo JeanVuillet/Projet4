@@ -358,15 +358,21 @@ Quantity.addEventListener("change",(e)=>{
 })
 //checking radio
 submitBtn.addEventListener('click',(e)=>{
-  alert(  CheckFirstname());
-  alert(   CheckLastname());
-   alert( CheckEmail());
-    alert(    BirthdateCheck());
-    alert(chekQuantity());
-    alert(    checkCheckbox());
-    alert(  conditionsChecked());
+  // alert(  CheckFirstname());
+  // alert(   CheckLastname());
+  //  alert( CheckEmail());
+  //   alert(    BirthdateCheck());
+  //   alert(chekQuantity());
+  //   alert(    checkCheckbox());
+  //   alert(  conditionsChecked());
 
-
+  CheckFirstname();
+  CheckLastname();
+  CheckEmail();
+  BirthdateCheck();
+  chekQuantity();
+  checkCheckbox();
+  conditionsChecked();
 
   if(
 
