@@ -23,14 +23,7 @@ const submitBtn=document.querySelector(".btn-submit");
 //CREATING ERROR DIV
 //Testing if div present
 
- // creating errorDiv for FirstName
 
-let errorMessage="Le nom doit commencer par une majuscule et comporter au moins 2 caractères";
-
-
-let x= document.querySelector(".formData") 
-x.setAttribute("lolo",errorMessage);
-x.setAttribute("errorMessageVisible",true);
 
 //GENERATING FORMULAR DIV
 
@@ -59,11 +52,13 @@ let Birthdate=document.getElementById("birthdate");
 let Quantity=document.getElementById("quantity");
 let Radio=document.getElementById("radio");
 let Chekbox=document.getElementById("checkbox");
+
+
 //CREATING REGEXP and Controls
 
 //Text control
-let regexName= new RegExp ("[A-Z]+[a-z]+");
-let regexMail=new RegExp("[a-z0-9.-_]{2}@[A-Za-z0-9.-_]{2}\\.[a-z]{2}");
+
+
                     
 
 //birthdate control
@@ -91,7 +86,7 @@ function controlAge (age) {
 
  //creating error messages
 let errorName="Veuillez entrer 2 caractères ou plus.";
-let errorMail="Veuillez entrer une adresse mail valide.";
+
 let errorBirthdate="Veuillez entrer une date de naissance valide.";
 let errorQuantity="Veuillez entrer un nombre.";
 let errorRadio="Vous devez choisir une option.";
@@ -125,67 +120,106 @@ modalbg.addEventListener("submit",(event)=>{
   let last= document.getElementById("last")
 
 });
-let FormElement;
-//CHECKING FIRSTNAME
-FirstName.addEventListener("change",(e)=>
-{ //capting element
-  FormElement=FirstName;
-  //capting value
-  value= FirstName.value;
-  //testing value
-  resultTest= regexName.test(value)
-  //testing errorDiv presence
-   let present=presentTester(FirstName);
-
-  //genrating error div if error and no div yet
-divCreator(resultTest,present, errorName)
-  //removing errordiv if error corrected
-
-   if(resultTest && present){
-    let parent=FormElement.parentElement;
-parent.removeChild(parent.lastChild);
-  }
 
 
-});
+
+//Generating ErrorDivName function
+
+
+function CheckFirstname (){
+
+  // Matching error pseudoElement with CSS
+let firstNameParent= FirstName.parentElement
+
+  //testing value (capital+lowercase)
+  let regexName= new RegExp ("[A-Z]+[a-z]+");
+  resultTest= regexName.test(FirstName.value)
+//generating ErrorMessage
+let errorMessage="Le nom doit commencer par une majuscule et comporter au moins 2 caractères";
+firstNameParent.setAttribute("errorMessage",errorMessage);
+  
+
+  //activating ::after  if error 
+if(!resultTest ){
+  firstNameParent.setAttribute("errorMessageVisible",true);}
+  
+  
+  //disabeling ::after if error corrected
+  else {
+firstNameParent.setAttribute("errorMessageVisible",false);
+  } 
+}
+function CheckLastname (){
+
+  // Matching error pseudoElement with CSS
+let LastNameParent= LastName.parentElement
+
+  //testing value (capital+lowercase)
+  let regexName= new RegExp ("[A-Z]+[a-z]+");
+  resultTest= regexName.test(LastName.value)
+//generating ErrorMessage
+let errorMessage="Le nom doit commencer par une majuscule et comporter au moins 2 caractères";
+LastNameParent.setAttribute("errorMessage",errorMessage);
+  
+
+  //activating ::after  if error 
+if(!resultTest ){
+  LastNameParent.setAttribute("errorMessageVisible",true);}
+  
+  
+  //disabeling ::after if error corrected
+  else {
+LastNameParent.setAttribute("errorMessageVisible",false);
+  } 
+}
+
+
+
 //CHEKING LASTNAME
+
+
+
+
+
+
+
+//CHECKING EMAIL
+
+function CheckEmail (){
+
+  // Matching error pseudoElement with CSS
+let EmailParent= Email.parentElement
+
+  //testing value (capital+lowercase)
+  let regexMail=new RegExp("[a-z0-9.-_]{2}@[A-Za-z0-9.-_]{2}\\.[a-z]{2}");
+  resultTest= regexMail.test(Email.value)
+//generating ErrorMessage
+let errorMail="Veuillez entrer une adresse mail valide.";
+
+EmailParent.setAttribute("errorMessage",errorMail);
+  
+
+  //activating ::after  if error 
+if(!resultTest ){
+  EmailParent.setAttribute("errorMessageVisible",true);}
+  
+  
+  //disabeling ::after if error corrected
+  else {
+EmailParent.setAttribute("errorMessageVisible",false);
+  } 
+}
+
+//implementing Listeners
 LastName.addEventListener("change",(e)=>
 { 
-  //capting value
-  value= LastName.value;
-  //testing value
-  resultTest= regexName.test(value)
-  //testing errorDiv presence
-  present=(document.querySelector(".error"))
-
-  //genrating error div if error and no div yet
-if(!resultTest && !present){
-errorDiv(LastName,errorName);}
-  //removing errordiv if error corrected
-
-  else if(resultTest && present){
-LastName.parentElement.removeChild(div);
-  }
+CheckLastname()
 });
-
-//CHECKING MAIL
-Email.addEventListener("change",(e)=>
-{ 
-  //capting value
-  value= Email.value;
-  //testing value
-  resultTest= regexMail.test(value)
-  //testing errorDiv presence
-  present=(document.querySelector(".error"))
-
-  //genrating error div if error and no div yet
-if(!resultTest && !present){
-errorDiv(Email,errorMail);}
-  //removing errordiv if error corrected
-
-  else if(resultTest && present){
-Email.parentElement.removeChild(div);
-  }
+FirstName.addEventListener("change",(e)=>{
+  CheckLastname()
+})
+Email.addEventListener("change",(e)=>{
+  CheckEmail()
 });
 
 //CHEKING BIRTHDATE

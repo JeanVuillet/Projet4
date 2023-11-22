@@ -209,7 +209,7 @@ input {
   height: 48px;
 }
 .formData[errorMessageVisible=true]::after {
-  content: attr(lolo);
+  content: attr(errorMessage);
   font-size: 0.5em;
   color: #e54858;
   display: block;
@@ -218,7 +218,7 @@ input {
   margin-bottom: 7px;
   text-align: left;
   line-height: 0.3;
-  opacity: 0;
+  opacity: 1;
   transition: 0.3s;
 }
 .formData[cocoLaBaleine="alo"]::after{
