@@ -1,16 +1,13 @@
-<div class="div"
+<div class="div" lolo="lola" visible="true"></div>
 
-lolo="lola"
-visible="true"
-></div>
+<script>
+let a="di@bhfc.co";
 
-<style>
-    .div[visible="true"]::after{
-content: attr(lolo);
-width:20rem;
-height:20rem;
-background-color: green;
+let r= new RegExp("^[a-z]{2,4}@[a-z]{2,}.[a-z]{2,}");
+alert(r.test(a));
+
+</script>
 
 
-    }
-</style>
+
+

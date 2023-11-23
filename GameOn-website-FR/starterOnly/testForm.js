@@ -117,10 +117,10 @@ function CheckFirstname (){
 let firstNameParent= FirstName.parentElement
 
   //testing value (capital+lowercase)
-  let regexName= new RegExp ("[A-Z]+[a-z]+");
+  let regexName= new RegExp ("^[A-Z][a-z]+(-[A-Z][a-z]+){0,1}$");
   resultTest= regexName.test(FirstName.value)
 //generating ErrorMessage
-let errorMessage="Le nom doit commencer par une majuscule et comporter au moins 2 caractères";
+let errorMessage="Entrez un Prénom valide";
 firstNameParent.setAttribute("errorMessage",errorMessage);
   
 
@@ -143,10 +143,10 @@ function CheckLastname (){
 let LastNameParent= LastName.parentElement
 
   //testing value (capital+lowercase)
-  let regexName= new RegExp ("[A-Z]+[a-z]+");
+  let regexName= new RegExp ("^[A-Z][a-z]{0,}([ '][A-Z]['A-Za-z]+){0,2}$");
   resultTest= regexName.test(LastName.value)
 //generating ErrorMessage
-let errorMessage="Le nom doit commencer par une majuscule et comporter au moins 2 caractères";
+let errorMessage="Entrez un nom valide";
 LastNameParent.setAttribute("errorMessage",errorMessage);
   
 
@@ -182,8 +182,9 @@ function CheckEmail (){
 let EmailParent= Email.parentElement
 
   //testing value (capital+lowercase)
-  let regexMail=new RegExp("[a-z0-9.-_]{2}@[A-Za-z0-9.-_]{2}\\.[a-z]{2}");
+  let regexMail=new RegExp("[a-z0-9.-_]{2,}@[A-Za-z0-9.-_]{2,}\\.[a-z]{2,}");
   resultTest= regexMail.test(Email.value)
+
 //generating ErrorMessage
 let errorMail="Veuillez entrer une adresse mail valide.";
 
@@ -250,7 +251,7 @@ function chekQuantity()
 //getting Parent
 let QuantityParent=Quantity.parentElement;
   //testing value
-  let regexQuantity=new RegExp("^[0-9]*$");
+  let regexQuantity=new RegExp("^\\d+$");
   resultTest= regexQuantity.test(Quantity.value)
 //generating errordiv if error 
 let QuantityError="Veuillez entrer un nombre";
@@ -385,7 +386,21 @@ submitBtn.addEventListener('click',(e)=>{
     conditionsChecked()
     
   ){
-    alert("form validé")
+    // ocument.getElementsById("A");
+
+// formContent.style.display="none";
+
+let formContent=document.getElementById("content");
+    let validateDiv=document.getElementById("validate");
+    formContent.style.display="none";
+    validateDiv.style.display="flex";
+
+    let button=document.getElementById("fermer");
+
+    button.addEventListener("click",(e)=>{
+      validateDiv.style.display="none";
+    })
+
   }
  
 })
