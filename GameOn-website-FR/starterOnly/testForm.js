@@ -399,6 +399,8 @@ let formContent=document.getElementById("content");
 
     button.addEventListener("click",(e)=>{
       validateDiv.style.display="none";
+      document.getElementById("formulaire").reset();
+
     })
 
   }
