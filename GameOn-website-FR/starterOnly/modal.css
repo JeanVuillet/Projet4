@@ -243,8 +243,10 @@ input {
   max-width: 500px;
   height:70%;
   border-radius: 10px;
-  background-color:chartreuse;
+  background-color:rgb(255, 0, 64);
   color:#000;
+  animation-name: modalopen;
+  animation-duration: var(--modal-duration);
 }
 /* validation button */
 .fermer{
