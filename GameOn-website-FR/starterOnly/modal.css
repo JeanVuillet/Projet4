@@ -243,18 +243,19 @@ input {
   max-width: 500px;
   height:70%;
   border-radius: 10px;
-  background-color:rgb(255, 0, 64);
-  color:#000;
+  background-color:#232323;
+  color:green;
   animation-name: modalopen;
   animation-duration: var(--modal-duration);
 }
 /* validation button */
 .fermer{
+  font-size: 1.3rem;
   width:10rem;
   height:3rem;
-  border-radius:20px;
-  
-  background-color: blueviolet;
+  border-radius:7px;
+  color:white;
+  background-color: #fe142f;
 }
 .checkbox-label,
 .checkbox2-label {
