@@ -336,11 +336,11 @@ return true;
 
 //implementing Listeners
 
-LastName.addEventListener("change",(e)=>
+FirstName.addEventListener("change",(e)=>
 { 
-CheckLastname()
+CheckFirstname()
 });
-FirstName.addEventListener("change",(e)=>{
+LastName.addEventListener("change",(e)=>{
   CheckLastname()
 })
 Email.addEventListener("change",(e)=>{
@@ -398,9 +398,11 @@ let formContent=document.getElementById("content");
     let button=document.getElementById("fermer");
 
     button.addEventListener("click",(e)=>{
+      modalbg.style.display="none";
       validateDiv.style.display="none";
-      document.getElementById("formulaire").reset();
-
+      let formulary =document.getElementById("formulaire");
+      formulary.reset();
+      formContent.style.display="flex";
     })
 
   }

@@ -208,6 +208,9 @@ input {
   font-size: 20px;
   height: 48px;
 }
+.formData[errorMessageVisible="true"] .text-control {
+  border: 2px solid #e54858;
+}
 .formData[errorMessageVisible=true]::after {
   content: attr(errorMessage);
   font-size: 0.7em;
@@ -225,9 +228,7 @@ input {
 .formData[data-error-visible="true"]::after {
   opacity: 1;
 }
-.formData[data-error-visible="true"] .text-control {
-  border: 2px solid #e54858;
-}
+
 /* validation div */
 .validate{
   display:none;
@@ -244,9 +245,15 @@ input {
   height:70%;
   border-radius: 10px;
   background-color:#232323;
-  color:green;
+  color:white;
   animation-name: modalopen;
   animation-duration: var(--modal-duration);
+}
+.merci{
+  display:flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 }
 /* validation button */
 .fermer{
