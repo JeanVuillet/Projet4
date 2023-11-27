@@ -120,7 +120,7 @@ let firstNameParent= FirstName.parentElement
   let regexName= new RegExp ("^[A-Z][a-z]+(-[A-Z][a-z]+){0,1}$");
   resultTest= regexName.test(FirstName.value)
 //generating ErrorMessage
-let errorMessage="Entrez un Prénom valide";
+let errorMessage="Entrer un Prénom valide (Maj+Min)";
 firstNameParent.setAttribute("errorMessage",errorMessage);
   
 
@@ -146,7 +146,7 @@ let LastNameParent= LastName.parentElement
   let regexName= new RegExp ("^[A-Z][a-z]{0,}([ '][A-Z]['A-Za-z]+){0,2}$");
   resultTest= regexName.test(LastName.value)
 //generating ErrorMessage
-let errorMessage="Entrez un nom valide";
+let errorMessage="Entrer un nom valide (Maj+Min)";
 LastNameParent.setAttribute("errorMessage",errorMessage);
   
 
