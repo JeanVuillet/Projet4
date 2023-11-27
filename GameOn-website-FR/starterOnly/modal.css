@@ -68,38 +68,6 @@ img {
   display: none;
 }
 
-@media screen and (max-width: 768px) {
-  .topnav a {display: none;}
-  .topnav a.icon {
-    float: right;
-    display: block;
-  }
-}
-
-@media screen and (max-width: 768px) {
-  .topnav.responsive {position: relative;}
-  .topnav.responsive .icon {
-    position: absolute;
-    right: 0;
-    top: 0;
-  }
-  .topnav.responsive a {
-    float: none;
-    display: block;
-    text-align: left;
-  }
-}
-
-
-
- @media screen and (max-width: 540px) {
-  .topnav a {display: none;}
-  .topnav a.icon {
-    float: right;
-    display: block;
-    margin-top: -15px;
-  }
-} 
 
 main {
   font-size: 130%;
@@ -240,9 +208,9 @@ input {
   padding-top: 10px;
   position: relative;
   top:5rem;
-  width: 536px;
+  max-width: 536px;
   height:851.61px;
-
+  height:70%;
   border-radius: 10px;
   background-color:#232323;
   color:white;
@@ -558,4 +526,3 @@ footer {
     opacity: 1;
   }
 }
-
