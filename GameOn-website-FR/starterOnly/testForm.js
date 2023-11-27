@@ -403,12 +403,13 @@ let formContent=document.getElementById("content");
       let formulary =document.getElementById("formulaire");
       formulary.reset();
       formContent.style.display="flex";
+    
     })
 
   }
  
 })
-
+// bonjour albert coucou
 
 
 
