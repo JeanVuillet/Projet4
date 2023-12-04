@@ -1,5 +1,5 @@
 function editNav() {
-  var x = document.getElementById("myTopnav");
+  const x = document.getElementById("myTopnav");
   if (x.className === "topnav") {
     x.className += " responsive";
   } else {
@@ -16,9 +16,9 @@ const modalBtn = document.querySelectorAll(".modal-btn");
 // sousDiv of form
 const formData = document.querySelectorAll(".formData");
 // btn close  form
-const closeBtn =document.querySelector(".close");
+const closeBtn = document.querySelector(".close");
 // btn submit
-const submitBtn=document.querySelector(".btn-submit");
+const submitBtn = document.querySelector(".btn-submit");
 
 //CREATING ERROR DIV
 //Testing if div present
@@ -36,8 +36,8 @@ function launchModal() {
 }
 
 // close button
-closeBtn.addEventListener("click",(ev)=>{
-  modalbg.style.display="none";
+closeBtn.addEventListener("click", (ev) => {
+  modalbg.style.display = "none";
 });
 
 
@@ -45,13 +45,13 @@ closeBtn.addEventListener("click",(ev)=>{
 
 
 // GETTING FORM ELEMENTS
-let FirstName=document.getElementById("first");
-let LastName=document.getElementById("last");
-let Email=document.getElementById("email");
-let Birthdate=document.getElementById("birthdate");
-let Quantity=document.getElementById("quantity");
-let Radio=document.getElementById("radio");
-let Chekbox=document.getElementById("checkbox");
+const firstNameInput = document.getElementById("first");
+const lastNameInput = document.getElementById("last");
+const emailInput = document.getElementById("email");
+const birthDateInput = document.getElementById("birthdate");
+const quantityInput = document.getElementById("quantity");
+const radio = document.getElementById("radio");
+const chekbox = document.getElementById("checkbox");
 
 
 //CREATING REGEXP and Controls
@@ -59,33 +59,33 @@ let Chekbox=document.getElementById("checkbox");
 //Text control
 
 
-                    
-
-//birthdate control
 
 
-//quantity control
-
- let regexRadio= new RegExp();
- let regexTcheck= new RegExp();
-
- //creating error messages
-let errorName="Veuillez entrer 2 caractères ou plus.";
+//birthDateInput control
 
 
-let errorQuantity="Veuillez entrer un nombre.";
-let errorRadio="Vous devez choisir une option.";
-let errorChekbox="Vous devez vérifier que vous acceptez les termes et conditions.";
+//quantityInput control
 
- //creating testFunctions
- function textfieldCaptor (Field){
-  let value=Field.value;
+let regexRadio = new RegExp();
+let regexTcheck = new RegExp();
+
+//creating error messages
+let errorName = "Veuillez entrer 2 caractères ou plus.";
+
+
+let errorQuantity = "Veuillez entrer un nombre.";
+let errorRadio = "Vous devez choisir une option.";
+let errorChekbox = "Vous devez vérifier que vous acceptez les termes et conditions.";
+
+//creating testFunctions
+function textfieldCaptor(Field) {
+  let value = Field.value;
   return value;
 
- }
+}
 
 
-  
+
 
 
 
@@ -99,10 +99,10 @@ let errorChekbox="Vous devez vérifier que vous acceptez les termes et condition
 
 //cancel defalt submit
 
-modalbg.addEventListener("submit",(event)=>{
+modalbg.addEventListener("submit", (event) => {
 
   event.preventDefault();
-  let last= document.getElementById("last")
+
 
 });
 
@@ -111,62 +111,62 @@ modalbg.addEventListener("submit",(event)=>{
 //Generating ErrorDivName function
 
 
-function CheckFirstname (){
+function CheckfirstNameInput() {
 
   // Matching error pseudoElement with CSS
-let firstNameParent= FirstName.parentElement
+  let firstNameInputParent = firstNameInput.parentElement
 
   //testing value (capital+lowercase)
-  let regexName= new RegExp ("^[A-Z][a-z]+(-[A-Z][a-z]+){0,1}$");
-  resultTest= regexName.test(FirstName.value)
-//generating ErrorMessage
-let errorMessage="Entrer un Prénom valide (Maj+Min)";
-firstNameParent.setAttribute("errorMessage",errorMessage);
-  
+  let regexName = new RegExp("^[A-Z][a-z]+(-[A-Z][a-z]+){0,1}$");
+  resultTest = regexName.test(firstNameInput.value)
+  //generating ErrorMessage
+  let errorMessage = "Entrer un Prénom valide (Maj+Min)";
+  firstNameInputParent.setAttribute("errorMessage", errorMessage);
+
 
   //activating ::after  if error 
-if(!resultTest ){
-  firstNameParent.setAttribute("errorMessageVisible",true);
-return false;
-}
-  
-  
+  if (!resultTest) {
+    firstNameInputParent.setAttribute("errorMessageVisible", true);
+    return false;
+  }
+
+
   //disabeling ::after if error corrected
   else {
-firstNameParent.setAttribute("errorMessageVisible",false);
-return true;
-  } 
+    firstNameInputParent.setAttribute("errorMessageVisible", false);
+    return true;
+  }
 }
-function CheckLastname (){
+function ChecklastNameInput() {
 
   // Matching error pseudoElement with CSS
-let LastNameParent= LastName.parentElement
+  let lastNameInputParent = lastNameInput.parentElement
 
   //testing value (capital+lowercase)
-  let regexName= new RegExp ("^[A-Z][a-z]{0,}([ '][A-Z]['A-Za-z]+){0,2}$");
-  resultTest= regexName.test(LastName.value)
-//generating ErrorMessage
-let errorMessage="Entrer un nom valide (Maj+Min)";
-LastNameParent.setAttribute("errorMessage",errorMessage);
-  
+  let regexName = new RegExp("^[A-Z][a-z]{0,}([ '][A-Z]['A-Za-z]+){0,2}$");
+  resultTest = regexName.test(lastNameInput.value)
+  //generating ErrorMessage
+  let errorMessage = "Entrer un nom valide (Maj+Min)";
+  lastNameInputParent.setAttribute("errorMessage", errorMessage);
+
 
   //activating ::after  if error 
-if(!resultTest ){
-  LastNameParent.setAttribute("errorMessageVisible",true)
-return  false;
-}
-  
-  
+  if (!resultTest) {
+    lastNameInputParent.setAttribute("errorMessageVisible", true)
+    return false;
+  }
+
+
   //disabeling ::after if error corrected
   else {
-LastNameParent.setAttribute("errorMessageVisible",false);
-return true;
-  } 
+    lastNameInputParent.setAttribute("errorMessageVisible", false);
+    return true;
+  }
 }
 
 
 
-//CHEKING LASTNAME
+//CHEKING lastNameInput
 
 
 
@@ -174,100 +174,102 @@ return true;
 
 
 
-//CHECKING EMAIL
+//CHECKING emailInput
 
-function CheckEmail (){
+function CheckemailInput() {
 
   // Matching error pseudoElement with CSS
-let EmailParent= Email.parentElement
+  let emailInputParent = emailInput.parentElement
 
   //testing value (capital+lowercase)
-  let regexMail=new RegExp("[a-z0-9.-_]{2,}@[A-Za-z0-9.-_]{2,}\\.[a-z]{2,}");
-  resultTest= regexMail.test(Email.value)
+  let regexMail = new RegExp("^[a-z0-9.-_]{2,}@[A-Za-z0-9.-_]{2,}\\.[a-z]{2,}");
+  resultTest = regexMail.test(emailInput.value)
 
-//generating ErrorMessage
-let errorMail="Veuillez entrer une adresse mail valide.";
+  //generating ErrorMessage
+  let errorMail = "Veuillez entrer une adresse mail valide.";
 
-EmailParent.setAttribute("errorMessage",errorMail);
-  
+  emailInputParent.setAttribute("errorMessage", errorMail);
+
 
   //activating ::after  if error 
-  let errorBirthdate="Veuillez entrer une date de naissance valide.";
-if(!resultTest ){
-  EmailParent.setAttribute("errorMessageVisible",true);
-return false}
-  
-  
+  let errorbirthDateInput = "Veuillez entrer une date de naissance valide.";
+  if (!resultTest) {
+    emailInputParent.setAttribute("errorMessageVisible", true);
+    return false
+  }
+
+
   //disabeling ::after if error corrected
   else {
-EmailParent.setAttribute("errorMessageVisible",false);
-return true;
-  } 
+    emailInputParent.setAttribute("errorMessageVisible", false);
+    return true;
+  }
 }
 
 
 
-//CHEKING BIRTHDATE
-function getAge(value){
+//CHEKING birthDateInput
+function getAge(value) {
   let d2 = new Date();
   var diff = d2.getTime() - value.getTime();
   return Math.floor(diff / (1000 * 60 * 60 * 24 * 365.25));
 }
 
 
-function BirthdateCheck(){
+function birthDateInputCheck() {
   //getting Parent
-  let BirthdateParent=Birthdate.parentElement;
+  let birthDateInputParent = birthDateInput.parentElement;
 
   //capting age
 
-   let age =getAge(new Date(Birthdate.value));
+  let age = getAge(new Date(birthDateInput.value));
 
 
   //testing value
-let resultTest=(age>18 && age<150)
+  let resultTest = (age > 18 && age < 150)
 
-//generating errordiv if error and no div yet
-let BirthdateError="Veuillez entrer une date de naissance valide"
-let errorMessage=BirthdateError;
-BirthdateParent.setAttribute("errorMessage",errorMessage);
+  //generating errordiv if error and no div yet
 
-if(!resultTest ){
-  BirthdateParent.setAttribute("errorMessageVisible",true);
-return false}
+  let errorMessage =  "Veuillez entrer une date de naissance valide";
+  birthDateInputParent.setAttribute("errorMessage", errorMessage);
+
+  if (!resultTest) {
+    birthDateInputParent.setAttribute("errorMessageVisible", true);
+    return false
+  }
 
   //disabeling ::after if error corrected
   else {
-BirthdateParent.setAttribute("errorMessageVisible",false);
-return true;
-  } 
-    
+    birthDateInputParent.setAttribute("errorMessageVisible", false);
+    return true;
+  }
+
 }
 // \
 
 //CHEKING QUANTITY
-function chekQuantity()
-{ 
-//getting Parent
-let QuantityParent=Quantity.parentElement;
+function chekQuantity() {
+  //getting Parent
+  let quantityInputParent = quantityInput.parentElement;
   //testing value
-  let regexQuantity=new RegExp("^\\d+$");
-  resultTest= regexQuantity.test(Quantity.value)
-//generating errordiv if error 
-let QuantityError="Veuillez entrer un nombre";
-let errorMessage=QuantityError;
-QuantityParent.setAttribute("errorMessage",errorMessage);
+  let regexQuantity = new RegExp("^\\d+$");
+  resultTest = regexQuantity.test(quantityInput.value)
+  //generating errordiv if error 
+  let QuantityError = "Veuillez entrer un nombre";
+  let errorMessage = QuantityError;
+  quantityInputParent.setAttribute("errorMessage", errorMessage);
 
-if(!resultTest ){
-  QuantityParent.setAttribute("errorMessageVisible",true);
-return false}
+  if (!resultTest) {
+    quantityInputParent.setAttribute("errorMessageVisible", true);
+    return false
+  }
 
   //disabeling ::after if error corrected
   else {
-QuantityParent.setAttribute("errorMessageVisible",false);
-return true;
-  } 
-    
+    quantityInputParent.setAttribute("errorMessageVisible", false);
+    return true;
+  }
+
 
 };
 
@@ -275,141 +277,129 @@ return true;
 //CHEKING RADIOBUTTONS
 
 
-function checkCheckbox(){
+function checkCheckbox() {
 
-// capting inputList
-let checkboxList= document.querySelectorAll('input[name="location"]')
-let checkboxValue=false;
-//getting Parent
-let checkboxParent=checkboxList[0].parentElement;
+  // capting inputList
+  let checkboxList = document.querySelectorAll('input[name="location"]')
+  let checkboxValue = false;
+  //getting Parent
+  let checkboxParent = checkboxList[0].parentElement;
 
-//capting input=true value IF input (else: input=false);
-  
-  for( let i=0; i<checkboxList.length; i++){
-    if(checkboxList[i].checked==true){
-   checkboxValue=checkboxList[i].value;
-  break;
+  //capting input=true value IF input (else: input=false);
+
+  for (let i = 0; i < checkboxList.length; i++) {
+    if (checkboxList[i].checked == true) {
+      checkboxValue = checkboxList[i].value;
+      break;
     }
-  else{checkboxValue==false;}}
-  
+    else { checkboxValue == false; }
+  }
+
 
   //testing value
-  let resultTest=checkboxValue;
+  let resultTest = checkboxValue;
 
-  let chekboxError="Veuillez sélectionner une réponse";
-  let errorMessage=chekboxError;
-  checkboxParent.setAttribute("errorMessage",errorMessage);
-  
-  if(!resultTest ){
-    checkboxParent.setAttribute("errorMessageVisible",true);
-  return false;}
-  
-    //disabeling ::after if error corrected
-    else {
-  checkboxParent.setAttribute("errorMessageVisible",false);
-  return true;
-    } 
 
+  let errorMessage =   "Veuillez sélectionner une réponse";
+  checkboxParent.setAttribute("errorMessage", errorMessage);
+
+  if (!resultTest) {
+    checkboxParent.setAttribute("errorMessageVisible", true);
+    return false;
   }
-function conditionsChecked(){
 
-    //capting checkbox values
-    let check1=document.querySelector('input[id="checkbox1"]');
-    
-   let resulTest=check1.checked;
-//gettingParent
-let checkboxParent=check1.parentElement;
-//acitvating error div
-let checkError="Veuillez valider les conditions ";
-let errorMessage=checkError;
-checkboxParent.setAttribute("errorMessage",errorMessage);
-// GENERATING ERRORDIV if false
-if(!resulTest ){
-  checkboxParent.setAttribute("errorMessageVisible",true);
-  return false;}
   //disabeling ::after if error corrected
   else {
-checkboxParent.setAttribute("errorMessageVisible",false);
-return true;
-  } 
+    checkboxParent.setAttribute("errorMessageVisible", false);
+    return true;
+  }
+
+}
+function conditionsChecked() {
+
+  //capting checkbox values
+  let check1 = document.querySelector('input[id="checkbox1"]');
+
+  let resulTest = check1.checked;
+  //gettingParent
+  let checkboxParent = check1.parentElement;
+  //acitvating error div
+
+  let errorMessage = "Veuillez valider les conditions ";
+  checkboxParent.setAttribute("errorMessage", errorMessage);
+  // GENERATING ERRORDIV if false
+  if (!resulTest) {
+    checkboxParent.setAttribute("errorMessageVisible", true);
+    return false;
+  }
+  //disabeling ::after if error corrected
+  else {
+    checkboxParent.setAttribute("errorMessageVisible", false);
+    return true;
+  }
 }
 
 //implementing Listeners
 
-FirstName.addEventListener("change",(e)=>
-{ 
-CheckFirstname()
+firstNameInput.addEventListener("change", (e) => {
+  CheckfirstNameInput()
 });
-LastName.addEventListener("change",(e)=>{
-  CheckLastname()
+lastNameInput.addEventListener("change", (e) => {
+  ChecklastNameInput()
 })
-Email.addEventListener("change",(e)=>{
-  CheckEmail()
+emailInput.addEventListener("change", (e) => {
+  CheckemailInput()
 });
-Birthdate.addEventListener("change",(e)=>{
+birthDateInput.addEventListener("change", (e) => {
 
-  //alowing birthdate full imput befor checking
-    let a= new RegExp("^[1-9]");
-    if(a.test(Birthdate.value)){
-      //Cheking value
-      BirthdateCheck();
-}})
-Quantity.addEventListener("change",(e)=>{
+  //alowing birthDateInput full imput befor checking
+  let a = new RegExp("^[1-9]");
+  if (a.test(birthDateInput.value)) {
+    //Cheking value
+    birthDateInputCheck();
+  }
+})
+quantityInput.addEventListener("change", (e) => {
   chekQuantity()
 })
 //checking radio
-submitBtn.addEventListener('click',(e)=>{
-  // alert(  CheckFirstname());
-  // alert(   CheckLastname());
-  //  alert( CheckEmail());
-  //   alert(    BirthdateCheck());
-  //   alert(chekQuantity());
-  //   alert(    checkCheckbox());
-  //   alert(  conditionsChecked());
+submitBtn.addEventListener('click', (e) => {
 
-  CheckFirstname();
-  CheckLastname();
-  CheckEmail();
-  BirthdateCheck();
-  chekQuantity();
-  checkCheckbox();
-  conditionsChecked();
 
-  if(
+  if (
 
-    CheckFirstname()&&
-    CheckLastname()&&
-    CheckEmail()&&
-    BirthdateCheck()&&
-    chekQuantity()&&
-    checkCheckbox()&&
+    CheckfirstNameInput() &&
+    ChecklastNameInput() &&
+    CheckemailInput() &&
+    birthDateInputCheck() &&
+    chekQuantity() &&
+    checkCheckbox() &&
     conditionsChecked()
-    
-  ){
-    // ocument.getElementsById("A");
 
-// formContent.style.display="none";
+  ) {
+ 
 
-let formContent=document.getElementById("content");
-    let validateDiv=document.getElementById("validate");
-    formContent.style.display="none";
-    validateDiv.style.display="flex";
 
-    let button=document.getElementById("fermer");
+    const formContent = document.getElementById("content");
+    const validateDiv = document.getElementById("validate");
+    formContent.style.display = "none";
+    validateDiv.style.display = "flex";
 
-    button.addEventListener("click",(e)=>{
-      modalbg.style.display="none";
-      validateDiv.style.display="none";
-      let formulary =document.getElementById("formulaire");
+    const button = document.getElementById("fermer");
+
+    button.addEventListener("click", (e) => {
+      modalbg.style.display = "none";
+      validateDiv.style.display = "none";
+      let formulary = document.getElementById("formulaire");
       formulary.reset();
-      formContent.style.display="flex";
-    
+      formContent.style.display = "flex";
+
     })
 
   }
- 
+
 })
-// bonjour albert coucou
+
 
 
 
