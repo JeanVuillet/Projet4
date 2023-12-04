@@ -104,7 +104,6 @@ function checkLastNameInput() {
   let errorMessage = "Entrer un nom valide (Maj+Min)";
   lastNameInputParent.setAttribute("errorMessage", errorMessage);
 
-
   //activating ::after  if error 
   if (!resultTest) {
     lastNameInputParent.setAttribute("errorMessageVisible", true)
