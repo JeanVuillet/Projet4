@@ -137,7 +137,7 @@ function checkEmailInput() {
 
 
   //activating ::after  if error 
-  let errorbirthDateInput = "Veuillez entrer une date de naissance valide.";
+
   if (!resultTest) {
     emailInputParent.setAttribute("errorMessageVisible", true);
     return false
