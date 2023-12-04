@@ -127,7 +127,7 @@ function checkEmailInput() {
   let emailInputParent = emailInput.parentElement
 
   //testing value (capital+lowercase)
-  let regexMail = new RegExp("^[a-z0-9.-_]{2,}@[A-Za-z0-9.-_]{2,}\\.[a-z]{2,}");
+  let regexMail = new RegExp(/^(([^<>()\[\]\\.,;:\s@]+([^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))/i);
   resultTest = regexMail.test(emailInput.value)
 
   //generating ErrorMessage
