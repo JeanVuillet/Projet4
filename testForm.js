@@ -20,10 +20,6 @@ const closeBtn = document.querySelector(".close");
 // btn submit
 const submitBtn = document.querySelector(".btn-submit");
 
-//CREATING ERROR DIV
-//Testing if div present
-
-
 
 //GENERATING FORMULAR DIV
 
@@ -54,46 +50,6 @@ const radio = document.getElementById("radio");
 const chekbox = document.getElementById("checkbox");
 
 
-//CREATING REGEXP and Controls
-
-//Text control
-
-
-
-
-//birthDateInput control
-
-
-//quantityInput control
-
-let regexRadio = new RegExp();
-let regexTcheck = new RegExp();
-
-//creating error messages
-let errorName = "Veuillez entrer 2 caractères ou plus.";
-
-
-let errorQuantity = "Veuillez entrer un nombre.";
-let errorRadio = "Vous devez choisir une option.";
-let errorChekbox = "Vous devez vérifier que vous acceptez les termes et conditions.";
-
-//creating testFunctions
-function textfieldCaptor(Field) {
-  let value = Field.value;
-  return value;
-
-}
-
-
-
-
-
-
-
-
-
-
-
 
 //CHECKING FORMULAR
 
@@ -103,22 +59,21 @@ modalbg.addEventListener("submit", (event) => {
 
   event.preventDefault();
 
-
 });
 
 
 
-//Generating ErrorDivName function
+//Generating control functions
 
 
-function CheckfirstNameInput() {
+function checkFirstNameInput() {
 
   // Matching error pseudoElement with CSS
-  let firstNameInputParent = firstNameInput.parentElement
+  const firstNameInputParent = firstNameInput.parentElement
 
   //testing value (capital+lowercase)
-  let regexName = new RegExp("^[A-Z][a-z]+(-[A-Z][a-z]+){0,1}$");
-  resultTest = regexName.test(firstNameInput.value)
+  const regexName = new RegExp("^[A-Z][a-z]+(-[A-Z][a-z]+){0,1}$");
+  let resultTest = regexName.test(firstNameInput.value)
   //generating ErrorMessage
   let errorMessage = "Entrer un Prénom valide (Maj+Min)";
   firstNameInputParent.setAttribute("errorMessage", errorMessage);
@@ -137,13 +92,13 @@ function CheckfirstNameInput() {
     return true;
   }
 }
-function ChecklastNameInput() {
+function checkLastNameInput() {
 
   // Matching error pseudoElement with CSS
   let lastNameInputParent = lastNameInput.parentElement
 
   //testing value (capital+lowercase)
-  let regexName = new RegExp("^[A-Z][a-z]{0,}([ '][A-Z]['A-Za-z]+){0,2}$");
+  const regexName = new RegExp("^[A-Z][a-z]{0,}([ '][A-Z]['A-Za-z]+){0,2}$");
   resultTest = regexName.test(lastNameInput.value)
   //generating ErrorMessage
   let errorMessage = "Entrer un nom valide (Maj+Min)";
@@ -165,18 +120,9 @@ function ChecklastNameInput() {
 }
 
 
-
-//CHEKING lastNameInput
-
-
-
-
-
-
-
 //CHECKING emailInput
 
-function CheckemailInput() {
+function checkEmailInput() {
 
   // Matching error pseudoElement with CSS
   let emailInputParent = emailInput.parentElement
@@ -280,10 +226,10 @@ function chekQuantity() {
 function checkCheckbox() {
 
   // capting inputList
-  let checkboxList = document.querySelectorAll('input[name="location"]')
+  const checkboxList = document.querySelectorAll('input[name="location"]')
   let checkboxValue = false;
   //getting Parent
-  let checkboxParent = checkboxList[0].parentElement;
+  const checkboxParent = checkboxList[0].parentElement;
 
   //capting input=true value IF input (else: input=false);
 
@@ -298,8 +244,6 @@ function checkCheckbox() {
 
   //testing value
   let resultTest = checkboxValue;
-
-
   let errorMessage =   "Veuillez sélectionner une réponse";
   checkboxParent.setAttribute("errorMessage", errorMessage);
 
@@ -318,20 +262,22 @@ function checkCheckbox() {
 function conditionsChecked() {
 
   //capting checkbox values
-  let check1 = document.querySelector('input[id="checkbox1"]');
+  let checkBox = document.querySelector('input[id="checkbox1"]');
+  let resulTest = checkBox.checked;
 
-  let resulTest = check1.checked;
   //gettingParent
-  let checkboxParent = check1.parentElement;
-  //acitvating error div
+  let checkboxParent = checkBox.parentElement;
 
+  //acitvating error div
   let errorMessage = "Veuillez valider les conditions ";
   checkboxParent.setAttribute("errorMessage", errorMessage);
+
   // GENERATING ERRORDIV if false
   if (!resulTest) {
     checkboxParent.setAttribute("errorMessageVisible", true);
     return false;
   }
+
   //disabeling ::after if error corrected
   else {
     checkboxParent.setAttribute("errorMessageVisible", false);
@@ -340,15 +286,14 @@ function conditionsChecked() {
 }
 
 //implementing Listeners
-
 firstNameInput.addEventListener("change", (e) => {
-  CheckfirstNameInput()
+  checkFirstNameInput()
 });
 lastNameInput.addEventListener("change", (e) => {
-  ChecklastNameInput()
+  checkLastNameInput()
 })
 emailInput.addEventListener("change", (e) => {
-  CheckemailInput()
+  checkEmailInput()
 });
 birthDateInput.addEventListener("change", (e) => {
 
@@ -363,14 +308,16 @@ quantityInput.addEventListener("change", (e) => {
   chekQuantity()
 })
 //checking radio
+
+// checking form on submit
 submitBtn.addEventListener('click', (e) => {
 
 
   if (
 
-    CheckfirstNameInput() &&
-    ChecklastNameInput() &&
-    CheckemailInput() &&
+    checkFirstNameInput() &&
+    checkLastNameInput() &&
+    checkEmailInput() &&
     birthDateInputCheck() &&
     chekQuantity() &&
     checkCheckbox() &&
@@ -384,7 +331,6 @@ submitBtn.addEventListener('click', (e) => {
     const validateDiv = document.getElementById("validate");
     formContent.style.display = "none";
     validateDiv.style.display = "flex";
-
     const button = document.getElementById("fermer");
 
     button.addEventListener("click", (e) => {
