@@ -181,8 +181,8 @@ function chekQuantity() {
   resultTest = regexQuantity.test(quantityInput.value)
 
   //generating errordiv if error 
-  let QuantityError = "Veuillez entrer un nombre";
-  let errorMessage = QuantityError;
+
+  let errorMessage =  "Veuillez entrer un nombre";
   quantityInputParent.setAttribute("errorMessage", errorMessage);
 
   if (!resultTest) {

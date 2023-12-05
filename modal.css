@@ -3,15 +3,12 @@
   --font-slab: var(--font-default);
   --modal-duration: 0.8s;
 }
-
 * {
   box-sizing: border-box;
   margin: 0;
   padding: 0;
 }
-
 /* Landing Page */
-
 body {
   margin: 0;
   display: flex;
@@ -21,29 +18,23 @@ body {
   max-width: 1300px;
   margin: 0 auto;
 }
-
 p {
   margin-bottom: 0;
   padding: 0.5vw;
 }
-
 img {
   padding-right: 1rem;
 }
-
 .topnav {
   overflow: hidden;
   margin: 3.5%;
 }
-
 .header-logo {
   float: left;
 }
-
 .main-navbar {
   float: right;
 }
-
 .topnav a {
   float: left;
   display: block;
@@ -55,24 +46,19 @@ img {
   font-size: 20px;
   font-family: Roboto, sans-serif;
 }
-
 .topnav a:hover {
   background-color: #ff0000;
   color: #ffffff;
   border-radius: 15px;
 }
-
 .topnav a.active {
   background-color: #ff0000;
   color: #ffffff;
   border-radius: 15px;
 }
-
 .topnav .icon {
   display: none;
 }
-
-
 main {
   font-size: 130%;
   font-weight: bolder;
@@ -83,10 +69,7 @@ main {
   margin: 1px 20px 15px;
   border-radius: 2rem;
   text-align: justify;
-
-
 }
-
 .modal-btn {
   font-size: 145%;
   background: #fe142f;
@@ -98,19 +81,15 @@ main {
   border-radius: 1rem;
   cursor: pointer;
 }
-
 .modal-btn:hover {
   background: #3876ac;
 }
-
 .footer {
   margin: 20px;
   padding: 10px;
   font-family: var(--font-slab);
 }
-
 /* Modal form */
-
 .button {
   background: #fe142f;
   margin-top: 0.5em;
@@ -120,15 +99,12 @@ main {
   cursor: pointer;
   font-size: 16px;
 }
-
 .button:hover {
   background: #3876ac;
 }
-
 .smFont {
   font-size: 16px;
 }
-
 .bground {
   display: none;
   position: fixed;
@@ -140,7 +116,6 @@ main {
   overflow: auto;
   background-color: rgba(26, 39, 156, 0.4);
 }
-
 .content {
   margin: 5% auto;
   width: 100%;
@@ -154,12 +129,10 @@ main {
   color: #fff;
   padding-top: 10px;
 }
-
 .modal-body {
   padding: 15px 8%;
   margin: 15px auto;
 }
-
 label {
   font-family: var(--font-default);
   font-size: 17px;
@@ -167,13 +140,11 @@ label {
   display: inline-block;
   margin-bottom: 11px;
 }
-
 input {
   padding: 8px;
   border: 0.8px solid #ccc;
   outline: none;
 }
-
 .text-control {
   margin: 0;
   padding: 8px;
@@ -182,7 +153,6 @@ input {
   font-size: 20px;
   height: 48px;
 }
-
 .formData[errorMessageVisible=true]::after {
   content: attr(errorMessage);
   font-size: 0.7em;
@@ -196,9 +166,6 @@ input {
   opacity: 1;
   transition: 0.3s;
 }
-
-
-
 /* validation div */
 .validate {
   display: none;
@@ -219,14 +186,12 @@ input {
   animation-name: modalopen;
   animation-duration: var(--modal-duration);
 }
-
 .merci {
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
 }
-
 /* validation button */
 .fermer {
   font-size: 1.3rem;
@@ -236,7 +201,6 @@ input {
   color: white;
   background-color: #fe142f;
 }
-
 .checkbox-label,
 .checkbox2-label {
   position: relative;
@@ -244,7 +208,6 @@ input {
   font-size: 12px;
   font-weight: normal;
 }
-
 .checkbox-label .checkbox-icon,
 .checkbox2-label .checkbox-icon {
   display: block;
@@ -259,7 +222,6 @@ input {
   top: -1px;
   transition: 0.3s;
 }
-
 .checkbox-label .checkbox-icon::after,
 .checkbox2-label .checkbox-icon::after {
   content: "";
@@ -276,26 +238,21 @@ input {
   transition: 0.3s;
   opacity: 0;
 }
-
 .checkbox-input {
   display: none;
 }
-
 .checkbox-input:checked+.checkbox-label .checkbox-icon::after,
 .checkbox-input:checked+.checkbox2-label .checkbox-icon::after {
   opacity: 1;
 }
-
 .checkbox-input:checked+.checkbox2-label .checkbox-icon {
   background: #279e7a;
 }
-
 .checkbox2-label .checkbox-icon {
   border-radius: 4px;
   border: 0;
   background: #c4c4c4;
 }
-
 .checkbox2-label .checkbox-icon::after {
   width: 7px;
   height: 4px;
@@ -308,7 +265,6 @@ input {
   left: 21%;
   top: 19%;
 }
-
 .close {
   position: absolute;
   right: 15px;
@@ -319,7 +275,6 @@ input {
   cursor: pointer;
   transform: scale(0.7);
 }
-
 .close:before,
 .close:after {
   position: absolute;
@@ -329,15 +284,12 @@ input {
   width: 3px;
   background-color: #fff;
 }
-
 .close:before {
   transform: rotate(45deg);
 }
-
 .close:after {
   transform: rotate(-45deg);
 }
-
 .btn-submit,
 .btn-signup {
   background: #fe142f;
@@ -350,7 +302,6 @@ input {
   cursor: pointer;
   border: 0;
 }
-
 /* custom select styles */
 .custom-select {
   position: relative;
@@ -358,15 +309,12 @@ input {
   font-size: 1.1rem;
   font-weight: normal;
 }
-
 .custom-select select {
   display: none;
 }
-
 .select-selected {
   background-color: #fff;
 }
-
 /* Style the arrow inside the select element: */
 .select-selected:after {
   position: absolute;
@@ -381,15 +329,11 @@ input {
   transform: rotate(-48deg);
   border-radius: 5px 0 5px 0;
 }
-
 /* Point the arrow upwards when the select box is open (active): */
 .select-selected.select-arrow-active:after {
   transform: rotate(135deg);
   top: 13px;
 }
-
-
-
 .select-selected {
   color: #000;
   padding: 11px 16px;
@@ -399,7 +343,6 @@ input {
   border-radius: 8px;
   height: 48px;
 }
-
 /* Style items (options): */
 .select-items {
   position: absolute;
@@ -409,23 +352,19 @@ input {
   right: 0;
   z-index: 99;
 }
-
 /* Hide the items when the select box is closed: */
 .select-hide {
   display: none;
 }
-
 .select-items div:hover,
 .same-as-selected {
   background-color: rgba(0, 0, 0, 0.1);
 }
-
 /* custom select end */
 .text-label {
   font-weight: normal;
   font-size: 16px;
 }
-
 .hero-section {
   min-height: 93vh;
   border-radius: 10px;
@@ -435,7 +374,6 @@ input {
   box-shadow: 0 2px 7px 2px rgba(0, 0, 0, 0.2);
   margin-bottom: 10px;
 }
-
 .hero-content {
   padding: 51px 67px;
   grid-column: span 4;
@@ -445,7 +383,6 @@ input {
   text-align: left;
   min-width: 424px;
 }
-
 .hero-content::after {
   content: "";
   width: 100%;
@@ -455,25 +392,21 @@ input {
   right: -80px;
   top: 0;
 }
-
 .hero-content>* {
   position: relative;
   z-index: 1;
 }
-
 .hero-headline {
   font-size: 6rem;
   font-weight: normal;
   white-space: nowrap;
 }
-
 .hero-text {
   width: 146%;
   font-weight: normal;
   margin-top: 57px;
   padding: 0;
 }
-
 .btn-signup {
   outline: none;
   text-transform: capitalize;
@@ -482,11 +415,9 @@ input {
   margin: 0;
   margin-top: 59px;
 }
-
 .hero-img {
   grid-column: span 8;
 }
-
 .hero-img img {
   width: 100%;
   height: 100%;
@@ -501,70 +432,58 @@ input {
   margin: 60px 0 30px;
   font-weight: bolder;
 }
-
 .hero-section>.btn-signup {
   display: none;
 }
-
 footer {
   padding-left: 2vw;
   padding-right: 2vw;
   margin: 0 20px;
 }
-
+/* mediaqueryes */
 @media screen and (max-width: 800px) {
   .hero-section {
     display: block;
     box-shadow: unset;
   }
-
   .hero-content {
     background: #fff;
     color: #000;
     padding: 20px;
   }
-
   .hero-content::after {
     content: unset;
   }
-
   .hero-content .btn-signup {
     display: none;
   }
-
   .hero-headline {
     font-size: 4.5rem;
     white-space: normal;
   }
-
   .hero-text {
     width: unset;
     font-size: 1.5rem;
   }
-
   .hero-img img {
     border-radius: 10px;
     margin-top: 40px;
   }
-
   .hero-section>.btn-signup {
     display: block;
     margin: 32px auto 10px;
     padding: 12px 35px;
   }
-
   .copyrights {
     margin-top: 50px;
     text-align: center;
   }
 }
-
 @keyframes modalopen {
   from {
     opacity: 0;
     transform: translateY(-150px);
   }
-
   to {
     opacity: 1;
   }
