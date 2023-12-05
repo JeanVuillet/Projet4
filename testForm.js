@@ -89,7 +89,7 @@ function checkLastNameInput() {
   resultTest = regexName.test(lastNameInput.value)
 
   //generating ErrorMessage
-  let errorMessage = "Entrer un nom valide (Maj+Min)";
+  let errorMessage = "Entrer un nom valide ";
   lastNameInputParent.setAttribute("errorMessage", errorMessage);
 
   //activating ::after  if error 
