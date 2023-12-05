@@ -61,10 +61,10 @@ function checkFirstNameInput() {
   const firstNameInputParent = firstNameInput.parentElement
 
   //testing value (capital+lowercase)
-  const regexName = new RegExp("^[A-Z][a-z]+(-[A-Z][a-z]+){0,1}$");
+  const regexName = new RegExp("^[A-Z a-z][a-z]{1,}$");
   let resultTest = regexName.test(firstNameInput.value)
   //generating ErrorMessage
-  let errorMessage = "Entrer un Prénom valide (Maj+Min)";
+  let errorMessage = "Entrer un Prénom valide ";
   firstNameInputParent.setAttribute("errorMessage", errorMessage);
 
   //activating ::after  if error 
@@ -85,7 +85,7 @@ function checkLastNameInput() {
   let lastNameInputParent = lastNameInput.parentElement
 
   //testing value (capital+lowercase)
-  const regexName = new RegExp("^[A-Z][a-z]{0,}([ '][A-Z]['A-Za-z]+){0,2}$");
+  const regexName = new RegExp("^[A-Z a-z][a-z]{1,}$");
   resultTest = regexName.test(lastNameInput.value)
 
   //generating ErrorMessage
